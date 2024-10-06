@@ -1,0 +1,22 @@
+import os
+import random
+import string
+import time
+from setproctitle import setproctitle
+
+def random_hex_string(length=12):
+    """Generates a random hexadecimal string of the given length."""
+    return ''.join(random.choice('0123456789abcdef') for _ in range(length))
+
+def crp():
+    """Continuously renames the process to a random hexadecimal name of length 12."""
+    try:
+        while True:
+            hex_name = random_hex_string(12)
+            setproctitle(hex_name)
+            print(f"Process renamed to: {hex_name}"
+    except KeyboardInterrupt:
+        print("\nProcess renaming stopped.")
+
+if __name__ == "__main__":
+    crp()
